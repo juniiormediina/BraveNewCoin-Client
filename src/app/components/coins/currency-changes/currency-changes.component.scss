@@ -1,0 +1,40 @@
+.currency-changes {
+  padding: 40px;
+  .titles {
+    text-align: center;
+    line-height: 30px;
+    h2 {
+      font-weight: 700;
+    }
+    h4 {
+      color: gray;
+      font-weight: 300;
+      font-size: 18px;
+    }
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    .input {
+      border: 1px solid gray;
+      height: 45px;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    span {
+      color: gray;
+    }
+    position: relative;
+    .convert {
+      position: absolute;
+      top: 39%;
+      right: 0%;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

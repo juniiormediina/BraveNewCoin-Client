@@ -1,0 +1,27 @@
+<div class="sidebar" [ngStyle]="{ width: icon == 'menu' ? '55px' : '150px' }">
+  <div [ngClass]="icon == 'menu' ? 'icon-bars' : 'icon-close'">
+    <a routerLink="/" class="list-item">
+      <i (click)="toggle()" class="material-icons">{{ icon }}</i>
+    </a>
+  </div>
+  <div class="list-items">
+    <a routerLink="" routerLinkActive="selected" class="list-item">
+      <i class="material-icons">home</i>
+      Home
+    </a>
+    <a routerLink="/coins" routerLinkActive="selected" class="list-item">
+      <i class="material-icons">paid</i>
+      Coins
+    </a>
+    <a routerLink="/admin" routerLinkActive="selected" class="list-item">
+      <i class="material-icons">admin_panel_settings</i>
+      Admin
+    </a>
+  </div>
+  <div class="logout">
+    <a class="list-item">
+      <i class="material-icons">logout</i>
+      Logout
+    </a>
+  </div>
+</div>

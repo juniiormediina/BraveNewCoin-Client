@@ -1,0 +1,17 @@
+<div class="coins">
+  <div class="contenedorE text-center justify-content-center">
+    <div class="contenedorI">
+      <nav mat-tab-nav-bar class="links-container">
+        <a
+          mat-tab-link
+          *ngFor="let link of links"
+          [routerLink]="link.path"
+          routerLinkActive
+          #rla="routerLinkActive"
+          >{{ link.label }}</a
+        >
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

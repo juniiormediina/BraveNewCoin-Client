@@ -1,0 +1,44 @@
+<div class="currency-changes">
+  <div class="titles">
+    <h2>{{ "Make Change" }}</h2>
+    <h4>{{ "Select the Currencies" }}</h4>
+  </div>
+
+  <form novalidate class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" floatLabel="always" class="input">
+      <input matInput type="number" placeholder="0,00" />
+      <span matPrefix>$&nbsp;</span>
+      <!-- <span matSuffix>.00</span> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>BTC</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>USD</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always" class="input">
+      <input matInput type="number" placeholder="0,00" />
+      <span matPrefix>$&nbsp;</span>
+      <!-- <span matSuffix>.00</span> -->
+    </mat-form-field>
+
+    <button type="submit" mat-button class="btn btn-success">
+      {{ "Convert" }}
+    </button>
+
+    <a class="convert"
+      ><img src="../../../../assets/images/exchange.png" alt="Convert"
+    /></a>
+  </form>
+</div>

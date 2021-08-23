@@ -1,0 +1,90 @@
+.sidebar {
+  height: 100%;
+  background: rgba(6, 50, 131, 0.788);
+  width: 55px;
+  height: 100vh;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .icon-bars {
+    text-align: center;
+    padding: 10px 20px;
+    a {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  .icon-close {
+    text-align: end;
+    padding: 10px 20px;
+    a {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  .list-items {
+    .list-item {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 10px 20px;
+      font-family: "Open Sans";
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        color: white;
+        &::before {
+          opacity: 0.35;
+          transform: scaleY(0.5) scaleX(2);
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background: rgb(0, 238, 255);
+        /* set opacity to 0 by default */
+        opacity: 0;
+        transform: scaleY(0);
+        transition: all 0.3s ease-out;
+      }
+
+      .material-icons {
+        margin-right: 12px;
+      }
+    }
+
+    .selected {
+      color: white;
+      &::before {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+  }
+
+  .logout {
+    padding: 10px 20px;
+    font-family: "Open Sans";
+    cursor: pointer;
+    overflow: hidden;
+    a {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.85);
+      .material-icons {
+        margin-right: 12px;
+      }
+    }
+  }
+}
