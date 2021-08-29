@@ -1,27 +1,40 @@
-<div class="sidebar" [ngStyle]="{ width: icon == 'menu' ? '55px' : '150px' }">
+<nav class="sidebar" [ngStyle]="{ width: icon == 'menu' ? '55px' : '200px' }">
   <div [ngClass]="icon == 'menu' ? 'icon-bars' : 'icon-close'">
-    <a routerLink="/" class="list-item">
+    <a class="list-item">
       <i (click)="toggle()" class="material-icons">{{ icon }}</i>
     </a>
   </div>
   <div class="list-items">
-    <a routerLink="" routerLinkActive="selected" class="list-item">
-      <i class="material-icons">home</i>
-      Home
-    </a>
-    <a routerLink="/coins" routerLinkActive="selected" class="list-item">
-      <i class="material-icons">paid</i>
-      Coins
-    </a>
-    <a routerLink="/admin" routerLinkActive="selected" class="list-item">
-      <i class="material-icons">admin_panel_settings</i>
-      Admin
-    </a>
+    <ul>
+      <li>
+        <a routerLink="" routerLinkActive="selected" class="list-item">
+          <i class="material-icons">home</i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/coins" routerLinkActive="selected" class="list-item">
+          <i class="material-icons">paid</i>
+          Coins
+        </a>
+      </li>
+      <li *ngIf="!isLogged">
+        <a routerLink="/login" routerLinkActive="selected" class="list-item"
+          ><i class="material-icons">login</i> Iniciar Sesión</a
+        >
+      </li>
+      <li>
+        <a routerLink="/admin" routerLinkActive="selected" class="list-item">
+          <i class="material-icons">admin_panel_settings</i>
+          Admin
+        </a>
+      </li>
+    </ul>
   </div>
   <div class="logout">
-    <a class="list-item">
-      <i class="material-icons">logout</i>
+    <a class="list-item" *ngIf="isLogged">
+      <i class="material-icons" (click)="onLogOut()">logout</i>
       Logout
     </a>
   </div>
-</div>
+</nav>

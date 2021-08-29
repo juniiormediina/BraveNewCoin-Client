@@ -1,6 +1,8 @@
-<h1>Bienvenidos a Brave New Coin!</h1>
-
-<button mat-flat-button color="primary" routerLink="/login">
-  <i class="material-icons">login</i>
-  Login
-</button>
+<div class="container text-center">
+  <div *ngIf="isLogged; else loggedOut">
+    <h2>Bienvenido {{ userName }}</h2>
+    <h4>a</h4>
+    <h2>Brave New Coin!</h2>
+  </div>
+  <ng-template #loggedOut> No has iniciado sesión </ng-template>
+</div>

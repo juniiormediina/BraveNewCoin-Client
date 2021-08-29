@@ -6,6 +6,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ListCurrenciesComponent } from './components/coins/list-currencies/list-currencies.component';
 import { CurrencyChangesComponent } from './components/coins/currency-changes/currency-changes.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'signUp',
+    component: SignupComponent,
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
