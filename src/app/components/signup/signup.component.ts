@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { SignUp } from 'src/app/models/sign-up';
+import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/jwt/token.service';
 
 @Component({
@@ -7,17 +11,50 @@ import { TokenService } from 'src/app/service/jwt/token.service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  newUser!: SignUp;
+  name!: string;
+  username!: string;
+  email!: string;
+  password!: string;
+  errMsj!: string;
   isLogged = false;
-  isLoginFail = false;
-  roles: string[] = [];
 
-  constructor(private tokenService: TokenService) {}
+  constructor(
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
-      this.isLoginFail = false;
-      // this.roles = this.tokenService.getAuthorities();
     }
+  }
+
+  onRegister(): void {
+    this.newUser = new SignUp(
+      this.name,
+      this.username,
+      this.email,
+      this.password
+    );
+    this.authService.signup(this.newUser).subscribe(
+      () => {
+        this.toastr.success('Cuenta Creada', 'OK', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        this.errMsj = err.error.mensaje;
+        this.toastr.error(this.errMsj, 'Fail', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
   }
 }

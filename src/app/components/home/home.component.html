@@ -1,8 +1,20 @@
 <div class="container text-center">
-  <div *ngIf="isLogged; else loggedOut">
-    <h2>Bienvenido {{ userName }}</h2>
-    <h4>a</h4>
-    <h2>Brave New Coin!</h2>
+  <div
+    class="
+      vh-100
+      justify-content-center
+      align-items-center
+      wrapper-content-home
+      row
+    "
+  >
+    <div *ngIf="isLogged; else loggedOut">
+      <h2>Bienvenido {{ userName }}</h2>
+      <h4>a</h4>
+      <h2>Brave New Coin!</h2>
+    </div>
+    <ng-template #loggedOut>
+      <h2>No has iniciado sesión</h2>
+    </ng-template>
   </div>
-  <ng-template #loggedOut> No has iniciado sesión </ng-template>
 </div>

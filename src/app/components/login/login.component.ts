@@ -1,9 +1,9 @@
-import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login';
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/jwt/token.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -46,12 +47,19 @@ export class LoginComponent {
         this.tokenService.setUserName(data.username);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
+        this.toastr.success('Bienvenido ' + data.username, 'OK', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
         this.router.navigate(['/']);
       },
       (err) => {
         this.isLogged = false;
         this.isLoginFail = true;
-        this.errMsj = err.error.message;
+        this.toastr.error(this.errMsj, 'Fail', {
+          timeOut: 3000,
+          positionClass: 'toast-top-center',
+        });
         console.log(this.errMsj);
       }
     );
